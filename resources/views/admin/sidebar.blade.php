@@ -39,7 +39,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                @if($url == $urlMhs)
+                @if($url != $urlIndex)
                 <a href="/mahasiswa" class="nav-link active">
                 @else
                 <a href="/mahasiswa" class="nav-link">

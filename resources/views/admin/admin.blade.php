@@ -52,7 +52,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     @include('admin/dashboard')
-    @yield('content')
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

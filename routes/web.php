@@ -16,4 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/index', 'AdminController@index');
-Route::get('/mahasiswa', 'AdminController@index');
+Route::get('/mahasiswa', 'MahasiswaController@index');
+Route::get('/mahasiswa/detail/{id}', 'MahasiswaController@show');
+Route::get('/mahasiswa/edit/{id}', 'MahasiswaController@edit');

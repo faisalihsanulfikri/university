@@ -11,7 +11,7 @@ class AdminController extends Controller
         return view('admin/admin');
     }
 
-    public function students()
+    public function mahasiswa()
     {
         return view('admin/mahasiswa/mahasiswa');
     }
