@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', 'AdminController@index');
+Route::get('/index', 'AdminController@index');
+Route::get('/mahasiswa', 'AdminController@index');
