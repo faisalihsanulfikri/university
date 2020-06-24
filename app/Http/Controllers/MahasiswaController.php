@@ -63,7 +63,11 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'id' => $id,
+            'section' => 'mahasiswa_edit'
+        ];
+        return view('admin/mahasiswa/mahasiswa', $data);
     }
 
     /**
