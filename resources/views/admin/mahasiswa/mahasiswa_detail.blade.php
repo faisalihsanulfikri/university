@@ -29,7 +29,12 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
-                    
+                            <a href="/mahasiswa">
+                                <button type="submit" class="btn btn-danger">Back</button>
+                            </a>
+                            <a href="/mahasiswa/edit/{{ $id }}">
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                            </a>
                     </div>
                 </div>
             <!-- /.card -->
@@ -54,7 +59,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($courses as $key=>$value)
+                    @foreach($studentcourses as $key=>$value)
                     <tr>
                         <td>{{ $key+1 }}</td>
                         <td>{{ strtoupper($value->code) }}</td>
