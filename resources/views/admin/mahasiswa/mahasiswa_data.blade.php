@@ -22,57 +22,34 @@
                     </tr>
                     </thead>
                     <tbody>
+
+                    @foreach($students as $el)
                     <tr>
-                        <td>1010</td>
-                        <td>Faisal Ihsanul</td>
-                        <td>Teknik Informatika</td>
-                        <td>FTIK</td>
+                        <td>{{ $el->nim }}</td>
+                        <td>{{ $el->name }}</td>
+                        <td>{{ $el->studyprogram->name }}</td>
+                        <td>{{ $el->faculty->name }}</td>
                         <td>
                             <div class="row">
                                 <div>
-                                    <a href="{{ Request::url() }}/detail/1">
+                                    <a href="{{ Request::url() }}/detail/{{ $el->id }}">
                                         <i class="action far fa-eye"></i>
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="{{ Request::url() }}/edit/1">
+                                    <a href="{{ Request::url() }}/edit/{{ $el->id }}">
                                         <i class="action far fa-edit"></i>
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="{{ Request::url() }}/delete/1">
+                                    <a href="{{ Request::url() }}/delete/{{ $el->id }}">
                                         <i class="action far fa-trash-alt"></i>
                                     </a>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>1010</td>
-                        <td>Faisal Ihsanul</td>
-                        <td>Teknik Informatika</td>
-                        <td>FTIK</td>
-                        <td>
-                            <div class="row">
-                                <div>
-                                    <a href="{{ Request::url() }}/detail/1">
-                                        <i class="action far fa-eye"></i>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="{{ Request::url() }}/edit/1">
-                                        <i class="action far fa-edit"></i>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="{{ Request::url() }}/delete/1">
-                                        <i class="action far fa-trash-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    
+                    @endforeach
                     
                     </tbody>
                 </table>

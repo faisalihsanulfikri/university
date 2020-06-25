@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Student;
+
+use DB;
+
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -13,8 +17,11 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
+        $students = Student::with('faculty','studyprogram')->get();
+
         $data = [
-            'section' => 'mahasiswa_data'
+            'section' => 'mahasiswa_data',
+            'students' => $students
         ];
         return view('admin/mahasiswa/mahasiswa', $data);
     }
@@ -48,9 +55,20 @@ class MahasiswaController extends Controller
      */
     public function show($id)
     {
+        $student = Student::with('faculty','studyprogram')
+                    ->where('id', $id)
+                    ->first();
+        
+        $courses = DB::table('studentcourses')
+                    ->join('courses', 'studentcourses.course_id', '=', 'courses.id')
+                    ->where('studentcourses.student_id', $id)
+                    ->get();
+
         $data = [
             'id' => $id,
-            'section' => 'mahasiswa_detail'
+            'section' => 'mahasiswa_detail',
+            'student' => $student,
+            'courses' => $courses
         ];
         return view('admin/mahasiswa/mahasiswa', $data);
     }

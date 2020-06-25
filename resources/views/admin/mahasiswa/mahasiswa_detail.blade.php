@@ -11,19 +11,19 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>NIM</th>
-                            <td>10115224</td>
+                            <td>{{ $student->nim }}</td>
                             </tr>
                             <tr>
                             <th>Nama</th>
-                            <td>Faisal Ihsanul Fikri</td>
+                            <td>{{ $student->name }}</td>
                             </tr>
                             <tr>
                             <th>Jurusan</th>
-                            <td>Teknik Informatika</td>
+                            <td>{{ $student->studyprogram->name }}</td>
                             </tr>
                             <tr>
                             <th>Fakultas</th>
-                            <td>FTIK</td>
+                            <td>{{ $student->faculty->name }}</td>
                         </tr>
                     </table>
                     </div>
@@ -54,11 +54,14 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($courses as $key=>$value)
                     <tr>
-                        <td>1.</td>
-                        <td>IF3030</td>
-                        <td>Database</td>
+                        <td>{{ $key+1 }}</td>
+                        <td>{{ strtoupper($value->code) }}</td>
+                        <td>{{ $value->name }}</td>
                     </tr>
+
+                    @endforeach
                     
                     </tbody>
                 </table>
