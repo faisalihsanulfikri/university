@@ -8,6 +8,8 @@ use App\Studyprogram;
 use App\Studentcourse;
 use App\Faculty;
 
+use App\Charts\DashboardChart;
+
 use DB;
 
 use Illuminate\Http\Request;
@@ -41,15 +43,31 @@ class AdminController extends Controller
             }
         }
 
+        $studyProgramName = [];
+        $studyProgramTotal = [];
+
+        // 
+        foreach ($studyProgram as $sp) {
+            array_push($studyProgramName, $sp->name);
+            array_push($studyProgramTotal, $sp->total);
+        }
+
         $countStudent = count($student);
+
+        $color = "rgba(22,160,133, 0.2)";
+
+        $chart = new DashboardChart;
+        $chart->labels($studyProgramName);
+        $chart->dataset('Jumlah Mahasiswa', 'bar', $studyProgramTotal)
+            ->color($color)
+            ->backgroundcolor($color);
 
         $data = [
             'courses' => $courses,
             'studyProgram' => $studyProgram,
             'countStudent' => $countStudent,
+            'chart' => $chart 
         ];
-
-        // return response()->json($data);
 
         return view('admin/admin', $data);
     }
