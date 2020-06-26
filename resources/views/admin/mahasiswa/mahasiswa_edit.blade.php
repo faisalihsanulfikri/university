@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <form method="get" action="{{ url('mahasiswa/update/'.$id) }}">
+                    <form method="post" action="{{ url('mahasiswa/update/'.$id) }}">
                         @csrf
                         <div class="row">
                             <!-- detail mahasiswa -->
