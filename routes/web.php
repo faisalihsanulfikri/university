@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'AdminController@index');
 Route::get('/index', 'AdminController@index');
 Route::get('/mahasiswa', 'MahasiswaController@index')->name('mahasiswa');
 Route::get('/mahasiswa/detail/{id}', 'MahasiswaController@show');
