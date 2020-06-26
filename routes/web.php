@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/admin', 'AdminController@index');
+Route::get('/', 'AdminController@index');
+Route::get('/index', 'AdminController@index');
+Route::get('/mahasiswa', 'MahasiswaController@index')->name('mahasiswa');
+Route::get('/mahasiswa/detail/{id}', 'MahasiswaController@show');
+Route::get('/mahasiswa/edit/{id}', 'MahasiswaController@edit');
+Route::post('/mahasiswa/update/{id}', 'MahasiswaController@update');
+Route::get('/mahasiswa/delete/{id}', 'MahasiswaController@destroy');
