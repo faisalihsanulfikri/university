@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Student;
+use App\Course;
+use App\Studyprogram;
+use App\Studentcourse;
+
 class AdminController extends Controller
 {
     /**
