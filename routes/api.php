@@ -13,13 +13,37 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+    'namespace' => 'Api'
+], function () {
+
+    /** 
+     * AUTHORIZATION IF NEEDED
+     */
+    Route::post('/auth/login', 'UserController@login');
+    Route::post('/auth/register', 'UserController@register');
+
+    Route::get('/index', 'AdminController@index');
+    Route::get('/mahasiswa', 'MahasiswaController@index')->name('mahasiswa');
+    Route::get('/mahasiswa/detail/{id}', 'MahasiswaController@show');
+    Route::post('/mahasiswa/update/{id}', 'MahasiswaController@update');
+    Route::delete('/mahasiswa/delete/{id}', 'MahasiswaController@destroy');
+
+
+
+    /** Code Route Below If Use Auth Token / Middleware */
+    Route::group([
+        'middleware' => 'auth:api'
+    ], function () {
+        // Route::get('/index', 'AdminController@index');
+        // Route::get('/mahasiswa', 'MahasiswaController@index')->name('mahasiswa');
+        // Route::get('/mahasiswa/detail/{id}', 'MahasiswaController@show');
+        // Route::post('/mahasiswa/update/{id}', 'MahasiswaController@update');
+        // Route::delete('/mahasiswa/delete/{id}', 'MahasiswaController@destroy');
+        
+    });
 });
 
-Route::get('/index', 'Api\AdminController@index');
 
-Route::get('/mahasiswa', 'Api\MahasiswaController@index')->name('mahasiswa');
-Route::get('/mahasiswa/detail/{id}', 'Api\MahasiswaController@show');
-Route::post('/mahasiswa/update/{id}', 'Api\MahasiswaController@update');
-Route::delete('/mahasiswa/delete/{id}', 'Api\MahasiswaController@destroy');
+
+
