@@ -10,8 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
-Route::get('/', 'AdminController@index');
+Route::get('/', 'AdminController@index')->name('home');
 Route::get('/index', 'AdminController@index');
 Route::get('/mahasiswa', 'MahasiswaController@index')->name('mahasiswa');
 Route::get('/mahasiswa/detail/{id}', 'MahasiswaController@show');
